@@ -21,7 +21,7 @@ import Link from 'next/link';
 export default function ProjectDescription() {
   return (
     <DropdownMenu>
-      <Card className="">
+      <Card className="mx-4 max-w-[600px]">
         <CardHeader>
           <CardTitle>Muse: For Artists and Fans</CardTitle>
           <CardDescription>Connect, Share, and Grow with Muse</CardDescription>
