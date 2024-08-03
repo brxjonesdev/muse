@@ -2,8 +2,6 @@
   <h1 align="center">Muse: Empowering Artists and Fans</h1>
 </a>
 
-<img width="1440" alt="I will add an image here once I have a UI, I promise!" src="#">
-
 <p align="center">
   Empower your artistic journey with Muse - where artists and fans connect seamlessly. Promote your music, sell merch, and engage with your audience effortlessly.
 </p>
