@@ -74,7 +74,7 @@ export default function ProjectDescription() {
         className="hover:bg-app-accent cursor-pointer"
         onClick={() => {
             window.open(`
-            https://whimsical.com/muse-system-design-Rts8eVZGPP9UoEUPP3xU5N
+            https://app.eraser.io/workspace/SiigBiv3x29HcdoY8k43?origin=share
         `);
           }}
         >
