@@ -7,12 +7,6 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/your-repo/muse/blob/main/LICENSE.md">
-    <img src="https://img.shields.io/github/license/https://github.com/brxjonesdev/muse/muse?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
-  </a>
-</p>
-
-<p align="center">
   <a href="#introduction"><strong>Introduction</strong></a> ·
   <a href="#installation"><strong>Installation</strong></a> ·
   <a href="#tech-stack--features"><strong>Tech Stack + Features</strong></a> ·
