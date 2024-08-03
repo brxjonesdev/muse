@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://github.com/your-repo/muse/blob/main/LICENSE.md">
-    <img src="https://img.shields.io/github/license/your-repo/muse?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
+    <img src="https://img.shields.io/github/license/https://github.com/brxjonesdev/muse/muse?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
   </a>
 </p>
 
