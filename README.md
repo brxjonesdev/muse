@@ -8,8 +8,7 @@
 
 <p align="center">
   <a href="#introduction"><strong>Introduction</strong></a> ·
-  <a href="#installation"><strong>Installation</strong></a> ·
-  <a href="#tech-stack--features"><strong>Tech Stack + Features</strong></a> ·
+  <a href="#What-we-are-using"><strong>Tech Stack + Features</strong></a> ·
 </p>
 <br/>
 
