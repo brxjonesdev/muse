@@ -16,8 +16,6 @@
 
 Welcome to Muse, an innovative platform dedicated to empowering music artists and enhancing their connection with fans. As someone with a musical and tech background, I wanted to create a space where artists can truly express their identity and showcase their work in a personalized, immersive environment. Currently, the platforms we currently use for music sharing lack the ability to allow artists to fully control thier brand and presentation. Muse aims to bridge this gap by providing artists with the tools to create a customized space that reflects their unique style and vision. Muse offers a versatile and flexible UI that adapts to the artist's needs. Artists can curate their entire portfolio, including music, visuals, and merchandise, all in one cohesive and customizable space. For fans, Muse is more than just a place to listen to music. It’s a space to explore and engage with their favorite artists on a deeper level. Fans can follow artists, interact through comments and messages, purchase merchandise, and stay updated with the latest releases, all while enjoying a user experience that is as unique as the artists they love.
 
-Our Vision
-
 Muse is built with the goal of providing a production-level app with a focus on high-quality UI/UX. Join us on this exciting journey as we build Muse, a platform where music artists can truly shine and fans can experience music in a whole new way.
 
 ## What we are using
