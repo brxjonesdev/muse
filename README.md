@@ -19,7 +19,9 @@ Welcome to Muse, an innovative platform dedicated to empowering music artists an
 Muse is built with the goal of providing a production-level app with a focus on high-quality UI/UX. Join us on this exciting journey as we build Muse, a platform where music artists can truly shine and fans can experience music in a whole new way.
 
 ## What we are using
+
 ### **Frameworks:**
+
 - **Next.js**: Powers the Muse application, handling server-side rendering and static site generation for optimal performance and SEO.
 - **TailwindCSS**: Used for styling the Muse UI, providing a utility-first approach to design responsive and modern interfaces.
 - **Typescript**: Ensures type safety and improves development efficiency throughout the Muse application codebase.
@@ -29,6 +31,7 @@ Muse is built with the goal of providing a production-level app with a focus on 
 - **Auth.js**: Handles authentication and user session management, ensuring secure login and user account management.
 
 ### **Platforms:**
+
 - **Vercel**: Hosts and deploys the Muse application, offering serverless deployment optimized for Next.js.
 - **Neon**: Provides a serverless PostgreSQL database solution, hosting Muse's database with scalable and managed infrastructure.
 - **Stripe**: Manages payment processing for merchandise purchases and other transactions within Muse.
@@ -36,6 +39,7 @@ Muse is built with the goal of providing a production-level app with a focus on 
 - **React Email**: Used for integrating and managing email functionality within the Muse application, such as transactional and notification emails.
 
 ### **UI:**
+
 - **Shadcn/UI**: Provides a component library for building consistent and visually appealing user interfaces within Muse.
 - **Framer Motion**: Adds animations and transitions to the Muse UI, enhancing the user experience with dynamic visual effects.
 - **Lucide**: Supplies icons for the Muse application, offering a set of customizable and accessible icons for various UI elements.

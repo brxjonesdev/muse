@@ -39,12 +39,23 @@ export default function ProjectDescription() {
             I'll be building Muse from the ground up, using the latest
             technologies and best practices to ensure a seamless and enjoyable
             experience for all users. Click{' '}
-            <DropdownMenuTrigger className='bg-black/10 rounded-md px-0.5'>here</DropdownMenuTrigger> to learn more about
-            the project.
+            <DropdownMenuTrigger className="bg-black/10 rounded-md px-0.5">
+              here
+            </DropdownMenuTrigger>{' '}
+            to learn more about the project.
           </p>
         </CardContent>
         <CardFooter>
-          <p className="text-sm">- Braxton Jones /<Link href="https://twitter.com/brxjonesdev" className='text-app-accent text-xs hover:underline cursor-pointer'> @brxjonesdev</Link></p>
+          <p className="text-sm">
+            - Braxton Jones /
+            <Link
+              href="https://twitter.com/brxjonesdev"
+              className="text-app-accent text-xs hover:underline cursor-pointer"
+            >
+              {' '}
+              @brxjonesdev
+            </Link>
+          </p>
         </CardFooter>
       </Card>
       <DropdownMenuContent>
@@ -60,9 +71,9 @@ export default function ProjectDescription() {
         >
           Github Repo
         </DropdownMenuItem>
-        <DropdownMenuItem 
-        className="hover:bg-app-accent cursor-pointer"
-        onClick={() => {
+        <DropdownMenuItem
+          className="hover:bg-app-accent cursor-pointer"
+          onClick={() => {
             window.open(`
             https://github.com/users/brxjonesdev/projects/7/views/1
         `);
@@ -70,9 +81,9 @@ export default function ProjectDescription() {
         >
           Kanban Board
         </DropdownMenuItem>
-        <DropdownMenuItem 
-        className="hover:bg-app-accent cursor-pointer"
-        onClick={() => {
+        <DropdownMenuItem
+          className="hover:bg-app-accent cursor-pointer"
+          onClick={() => {
             window.open(`
             https://app.eraser.io/workspace/SiigBiv3x29HcdoY8k43?origin=share
         `);
