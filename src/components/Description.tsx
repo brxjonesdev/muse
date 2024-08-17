@@ -64,7 +64,7 @@ export default function ProjectDescription() {
         className="hover:bg-app-accent cursor-pointer"
         onClick={() => {
             window.open(`
-            https://github.com/users/brxjonesdev/projects/7/views/1
+            https://www.notion.so/Muse-dc2310427fcb4da0b4f08b533416291a
         `);
           }}
         >
