@@ -1,69 +1,36 @@
-## What is Muse?
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Muse is a social music platform where fans **rate, review, discover, and share music** while building a profile that represents their personal taste.
+## Getting Started
 
-Muse combines three core experiences:
+First, run the development server:
 
-### Review Layer
-
-Users rate and review albums and tracks using structured attributes such as mood, production, lyricism, and replay value.
-
-### Taste Layer
-
-Reviews contribute to a living profile that describes a user's musical preferences beyond simple genres or listening statistics.
-
-### Credit Layer
-
-A navigable network of music credits and relationships. Using music metadata and Genius credits, users can explore connections between artists, albums, tracks, producers, writers, and other contributors.
-
-```text
-Review Layer
-"What do I think?"
-
-        ↓
-
-Taste Profile
-"What does my taste look like?"
-
-        +
-
-Beatweb
-"Who and what made this music?"
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## Core Experience
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-**Listen → Review → Discover → Understand Your Taste**
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-Users can:
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-* Rate and review music
-* Track listening history
-* Build public lists
-* Discover music through friends
-* View their evolving Taste Profile
-* Explore music through the Beatweb
-* Recommend music to friends
+## Learn More
 
-## Goal
+To learn more about Next.js, take a look at the following resources:
 
-Create a social music platform where **opinions become identity and music credits become discovery paths**.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Technology
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-* Next.js / React
-* TypeScript
-* PostgreSQL
-* Music metadata API
-* Genius API for credits
-* React Query
-* Tailwind CSS / shadcn/ui
+## Deploy on Vercel
 
-## Long-Term Vision
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Muse becomes a combination of:
-
-* **RateYourMusic** — reviews and ratings
-* **Last.fm** — listening history
-* **Letterboxd** — social music identity
-* **Music credit graph** — exploring the people and relationships behind music
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
