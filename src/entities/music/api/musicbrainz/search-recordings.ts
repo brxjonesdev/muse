@@ -6,6 +6,6 @@ export function searchMusicBrainzRecordings(
 ): Promise<RecordingSearchResponse> {
   return musicBrainzFetch<RecordingSearchResponse>("recording", {
     query,
-    limit: '1'
+    limit: '10'
   });
 }

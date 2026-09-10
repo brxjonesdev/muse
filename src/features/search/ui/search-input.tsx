@@ -1,15 +1,26 @@
+"use client"
 import { Input } from "@/shared/ui/shadcn/input";
+import { redirect } from "next/navigation";
 
-interface SearchInputProps {
-  onQueryUpdate: (query: string) => void;
-  query: string
-} 
-export default function SearchInput({query, onQueryUpdate}: SearchInputProps) {
+export default function SearchInput() {
+  function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const query = formData.get("query")?.toString().trim();
+
+    if (!query) return;
+
+    redirect(`/search?q=${query}`)
+  }
+
   return (
-    <Input
-      placeholder="Search"
-      value={query}
-      onChange={(e) => onQueryUpdate(e.target.value)}
-    />
+    <form onSubmit={handleSubmit}>
+      <Input
+        name="query"
+        placeholder="Search"
+        className="w-full md:w-100"
+      />
+    </form>
   );
 }

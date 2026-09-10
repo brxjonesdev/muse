@@ -4,6 +4,6 @@ import { ArtistSearchResponse } from "./types";
 export function searchMusicBrainzArtists(query: string): Promise<ArtistSearchResponse> {
   return musicBrainzFetch("artist", {
     query,
-    limit: "1",
+    limit: "10",
   })
 }

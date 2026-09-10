@@ -6,7 +6,7 @@ export function searchMusicBrainzReleaseGroups(
 ): Promise<ReleaseGroupSearchResponse> {
   return musicBrainzFetch<ReleaseGroupSearchResponse>("release-group", {
     query,
-    limit: '1'
+    limit: '10'
   });
   
 }

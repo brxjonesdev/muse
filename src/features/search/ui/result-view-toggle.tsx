@@ -1,5 +1,4 @@
 import { ButtonGroup } from "@/shared/ui/shadcn/button-group";
-import { useState } from "react";
 import { Button } from "@/shared/ui/shadcn/button";
 import type { Dispatch, SetStateAction } from "react";
 export default function ResultViewToggle({

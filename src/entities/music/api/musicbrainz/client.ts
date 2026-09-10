@@ -1,9 +1,12 @@
+import { musicBrainzRateLimit } from "./rate-limiter";
+
 const MUSICBRAINZ_URL = "https://musicbrainz.org/ws/2";
 
 export async function musicBrainzFetch<T>(
   path: string,
   params: Record<string, string>,
 ): Promise<T> {
+  await musicBrainzRateLimit();
   const searchParams = new URLSearchParams({
     ...params,
     fmt: "json",
@@ -19,8 +22,9 @@ export async function musicBrainzFetch<T>(
   );
 
   if (!response.ok) {
-    console.error(response);
-    throw new Error("MusicBrainz request failed");
+    throw new Error(
+      `MusicBrainz request failed: ${response.status} ${response.statusText}`,
+    );
   }
 
   return response.json();

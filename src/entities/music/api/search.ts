@@ -9,15 +9,11 @@ import { normalizeTrack } from "../mappers/map-track"
 export default async function searchMusic(
   query: string,
 ): Promise<MusicSearchResponse> {
-  const artists = await searchMusicBrainzArtists(query);
-
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  const albums = await searchMusicBrainzReleaseGroups(query);
-
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  const tracks = await searchMusicBrainzRecordings(query);
+  const [artists, albums, tracks] = await Promise.all([
+    searchMusicBrainzArtists(query),
+    searchMusicBrainzReleaseGroups(query),
+    searchMusicBrainzRecordings(query),
+  ]);
 
   return {
     artists: artists.artists.map(normalizeArtist),
