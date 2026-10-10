@@ -29,7 +29,9 @@ export const album = {
   getArtistAlbums: async (artistId: number): Promise<ITunesSearchResponse<ITunesAlbum>> => {
     "use cache";
   return iTunesLookup<ITunesAlbum>(artistId, {
+    media: "music",
     entity: "album",
+    attribute: "albumTerm",
     limit: 200,
   });
   },

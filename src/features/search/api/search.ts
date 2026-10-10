@@ -77,9 +77,17 @@ export default async function search(query: string): Promise<{
     incomingResults: tracksIT,
   }) as Track[];
 
-  const rankedArtists = rankByQuery(artists, q, (artist) => artist.name);
-  const rankedAlbums = rankByQuery(albums, q, (album) => album.title);
-  const rankedTracks = rankByQuery(tracks, q, (track) => track.title);
+  const rankedArtists = rankByQuery(artists, q, {
+    name: (artist) => artist.name,
+  });
+  
+  const rankedAlbums = rankByQuery(albums, q, {
+    name: (album) => album.title,
+  });
+  
+  const rankedTracks = rankByQuery(tracks, q, {
+    name: (track) => track.title,
+  });
 
   const lead = determineSearchIntent({
     artists: rankedArtists,
