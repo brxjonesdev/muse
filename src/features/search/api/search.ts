@@ -49,7 +49,6 @@ export default async function search(query: string): Promise<{
   ]);
 
   console.log(
-    itArtists,
     itAlbums,
     itTracks
   )
@@ -83,10 +82,13 @@ export default async function search(query: string): Promise<{
   
   const rankedAlbums = rankByQuery(albums, q, {
     name: (album) => album.title,
+    artist: (album) => album.artistName
   });
   
   const rankedTracks = rankByQuery(tracks, q, {
     name: (track) => track.title,
+    artist: (track) => track.artistName,
+    album: (track) => track.albumName
   });
 
   const lead = determineSearchIntent({

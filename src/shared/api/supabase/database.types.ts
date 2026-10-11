@@ -27,6 +27,7 @@ export type Database = {
         Row: {
           added_at: string;
           artist_id: number;
+          artist_name: string;
           copyright: string | null;
           country: string | null;
           cover_l: string | null;
@@ -34,7 +35,7 @@ export type Database = {
           explicit: boolean | null;
           genre: string | null;
           id: string;
-          itunes_id: number | null;
+          itunes_id: number;
           label: string | null;
           mbid: string | null;
           release_date: string | null;
@@ -49,6 +50,7 @@ export type Database = {
         Insert: {
           added_at?: string;
           artist_id: number;
+          artist_name: string;
           copyright?: string | null;
           country?: string | null;
           cover_l?: string | null;
@@ -56,7 +58,7 @@ export type Database = {
           explicit?: boolean | null;
           genre?: string | null;
           id?: string;
-          itunes_id?: number | null;
+          itunes_id: number;
           label?: string | null;
           mbid?: string | null;
           release_date?: string | null;
@@ -70,6 +72,7 @@ export type Database = {
         Update: {
           added_at?: string;
           artist_id?: number;
+          artist_name?: string;
           copyright?: string | null;
           country?: string | null;
           cover_l?: string | null;
@@ -77,7 +80,7 @@ export type Database = {
           explicit?: boolean | null;
           genre?: string | null;
           id?: string;
-          itunes_id?: number | null;
+          itunes_id?: number;
           label?: string | null;
           mbid?: string | null;
           release_date?: string | null;
@@ -142,7 +145,10 @@ export type Database = {
         Row: {
           added_at: string;
           album_id: number;
+          album_name: string;
+          album_type: string;
           artist_id: number;
+          artist_name: string;
           artwork_url: string | null;
           country: string | null;
           disc_number: number;
@@ -152,7 +158,7 @@ export type Database = {
           id: string;
           isrc: string | null;
           itunes_id: number | null;
-          itunes_url: string | null;
+          itunes_url: string;
           mbid: string | null;
           preview_url: string | null;
           release_date: string | null;
@@ -165,7 +171,10 @@ export type Database = {
         Insert: {
           added_at?: string;
           album_id: number;
+          album_name: string;
+          album_type: string;
           artist_id: number;
+          artist_name: string;
           artwork_url?: string | null;
           country?: string | null;
           disc_number?: number;
@@ -175,7 +184,7 @@ export type Database = {
           id?: string;
           isrc?: string | null;
           itunes_id?: number | null;
-          itunes_url?: string | null;
+          itunes_url: string;
           mbid?: string | null;
           preview_url?: string | null;
           release_date?: string | null;
@@ -187,7 +196,10 @@ export type Database = {
         Update: {
           added_at?: string;
           album_id?: number;
+          album_name?: string;
+          album_type?: string;
           artist_id?: number;
+          artist_name?: string;
           artwork_url?: string | null;
           country?: string | null;
           disc_number?: number;
@@ -197,7 +209,7 @@ export type Database = {
           id?: string;
           isrc?: string | null;
           itunes_id?: number | null;
-          itunes_url?: string | null;
+          itunes_url?: string;
           mbid?: string | null;
           preview_url?: string | null;
           release_date?: string | null;

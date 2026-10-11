@@ -68,6 +68,7 @@ async function SearchResults({ query }: { query: string }) {
               >
                 <div>{album.title}</div>
                 <div>{album.artistID}</div>
+                <div>{album.artistName}</div>
                 
               </Link>
             ))}
@@ -87,6 +88,8 @@ async function SearchResults({ query }: { query: string }) {
               >
                 <div>{track.title}</div>
                 <div>{track.artistID}</div>
+                <div>{track.artistName}</div>
+                <div>{track.albumName}</div>
               </Link>
             ))}
           </div>

@@ -17,9 +17,10 @@ CREATE TABLE albums (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     title TEXT NOT NULL,
     slug TEXT NOT NULL,
-    itunes_id BIGINT UNIQUE,
+    itunes_id BIGINT UNIQUE NOT NULL,
     mbid UUID UNIQUE,
     artist_id BIGINT NOT NULL REFERENCES artists(itunes_id) ON DELETE CASCADE,
+    artist_name TEXT NOT NULL,
     type TEXT,                -- album | single | ep
     cover_l TEXT,
     cover_m TEXT,
@@ -45,6 +46,9 @@ CREATE TABLE tracks (
     isrc TEXT,
     artist_id BIGINT NOT NULL REFERENCES artists(itunes_id) ON DELETE CASCADE,
     album_id BIGINT NOT NULL REFERENCES albums(itunes_id) ON DELETE CASCADE,
+    artist_name TEXT NOT NULL,
+    album_name TEXT NOT NULL,
+    album_type TEXT NOT NULL, -- album | single | ep
     track_number INTEGER,
     disc_number INTEGER NOT NULL DEFAULT 1,
     duration_ms INTEGER,
@@ -54,7 +58,7 @@ CREATE TABLE tracks (
     artwork_url TEXT,
     release_date TIMESTAMPTZ,
     genre TEXT,
-    itunes_url TEXT,
+    itunes_url TEXT NOT NULL,
     added_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
 

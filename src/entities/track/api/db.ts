@@ -2,6 +2,9 @@ import { itunes } from "@/shared/api/itunes";
 import { createClient } from "@/shared/api/supabase/server";
 import { mapITunesTrack } from "./mappers";
 import { db } from "@/shared/api/db";
+import { Database } from "@/shared/api/supabase/database.types";
+
+type TrackRow = Database["public"]["Tables"]["tracks"]['Insert']
 export const tracks = {
   search: async (q: string) => {
     const supabase = await createClient();
@@ -44,13 +47,16 @@ export const tracks = {
     }
 
     const track = mapITunesTrack(itunesTrack);
-    const trackToInsert = {
+    const trackToInsert: TrackRow = {
       album_id: track.albumID,
       artist_id: track.artistID,
+      album_name: track.albumName,
+      artist_name: track.artistName,
+      album_type: "album",
       title: track.title,
       slug: track.slug,
       itunes_id: track.iTunesID ?? null,
-      itunes_url: track.iTunesUrl ?? null,
+      itunes_url: track.iTunesUrl as string,
       artwork_url: track.artworkUrl ?? null,
       country: track.country ?? null,
       duration_ms: track.durationMs ?? null,

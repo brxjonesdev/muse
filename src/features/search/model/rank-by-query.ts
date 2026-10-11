@@ -11,13 +11,29 @@ export default function rankByQuery<T>(
   },
 ): SearchResult<T>[] {
   const rankedResults: SearchResult<T>[] = [];
+
   results.forEach((result) => {
-    const score = scoreMatch({
-      query: query,
+    let score = scoreMatch({
+      query,
       candidate: matchers.name(result),
     });
+
+    if (matchers.artist) {
+      score += scoreMatch({
+        query,
+        candidate: matchers.artist(result),
+      });
+    }
+
+    if (matchers.album) {
+      score += scoreMatch({
+        query,
+        candidate: matchers.album(result),
+      });
+    }
+
     rankedResults.push({ score, result });
   });
+
   return rankedResults.sort((a, b) => b.score - a.score);
 }
-
