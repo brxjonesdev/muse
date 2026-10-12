@@ -11,7 +11,7 @@ import { mapDBTrack, mapITunesTrack } from "@/entities/track/api/mappers";
 import { mapDBArtist, mapITunesArtist } from "@/entities/artist/api/mappers";
 import rankByQuery from "../model/rank-by-query";
 import { determineSearchIntent } from "../model/determine-intent";
-import { expandResults } from "../model/expand-results";
+
 
 // Searches the database and iTunes in parallel, maps and merges their results,
 // ranks matches by relevance, determines the search intent, and expands the results.
@@ -47,12 +47,7 @@ export default async function search(query: string): Promise<{
     safeFetch(() => itunes.album.search(q)),
     safeFetch(() => itunes.track.search(q)),
   ]);
-
-  console.log(
-    itAlbums,
-    itTracks
-  )
-
+  
   const artistsDB = dbArtists.map(mapDBArtist);
   const albumsDB = dbAlbums.map(mapDBAlbum);
   const tracksDB = dbTracks.map(mapDBTrack);

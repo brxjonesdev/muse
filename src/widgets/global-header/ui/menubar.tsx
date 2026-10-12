@@ -1,4 +1,6 @@
 "use client"
+import AuthStatus from "@/features/auth/ui/auth-status";
+import { createClient } from "@/shared/api/supabase/client";
 import {
 Menubar,
 MenubarContent,
@@ -9,6 +11,9 @@ MenubarSeparator,
 MenubarShortcut,
 MenubarTrigger,
 } from "@/shared/ui/shadcn/menubar";
+
+
+
 
 export default function HeaderMenuBar() {
   return (
@@ -29,11 +34,14 @@ export default function HeaderMenuBar() {
         </MenubarContent>
       </MenubarMenu>
       <MenubarMenu>
-        <MenubarTrigger>@you</MenubarTrigger>
+        <MenubarTrigger>
+          <AuthStatus/>
+        </MenubarTrigger>
       </MenubarMenu>
     </Menubar>
   );
 }
+
 
 
 

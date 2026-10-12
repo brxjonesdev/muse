@@ -1,6 +1,9 @@
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
-CREATE TABLE artists (
+-- add rls 
+-- move to public.
+
+CREATE TABLE public.artists (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name TEXT NOT NULL,
     normalized_name TEXT NOT NULL,
@@ -13,7 +16,7 @@ CREATE TABLE artists (
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-CREATE TABLE albums (
+CREATE TABLE public.albums (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     title TEXT NOT NULL,
     slug TEXT NOT NULL,
@@ -37,11 +40,11 @@ CREATE TABLE albums (
     UNIQUE (artist_id, slug)
 );
 
-CREATE TABLE tracks (
+CREATE TABLE public.tracks (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     title TEXT NOT NULL,
     slug TEXT NOT NULL,
-    itunes_id BIGINT UNIQUE,
+    itunes_id BIGINT UNIQUE NOT NULL,
     mbid UUID UNIQUE,
     isrc TEXT,
     artist_id BIGINT NOT NULL REFERENCES artists(itunes_id) ON DELETE CASCADE,
@@ -74,3 +77,36 @@ CREATE INDEX tracks_isrc_idx      ON tracks (isrc);
 -- Search
 CREATE INDEX artists_name_trgm ON artists USING GIN (name gin_trgm_ops);
 CREATE INDEX albums_title_trgm ON albums  USING GIN (title gin_trgm_ops);
+
+-- Enable Row Level Security
+ALTER TABLE public.artists ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.albums ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.tracks ENABLE ROW LEVEL SECURITY;
+
+-- Grant read access to anonymous and authenticated users
+GRANT SELECT ON TABLE
+    public.artists,
+    public.albums,
+    public.tracks
+TO anon, authenticated;
+
+-- Artists: public read access
+CREATE POLICY "Artists are publicly readable"
+ON public.artists
+FOR SELECT
+TO anon, authenticated
+USING (true);
+
+-- Albums: public read access
+CREATE POLICY "Albums are publicly readable"
+ON public.albums
+FOR SELECT
+TO anon, authenticated
+USING (true);
+
+-- Tracks: public read access
+CREATE POLICY "Tracks are publicly readable"
+ON public.tracks
+FOR SELECT
+TO anon, authenticated
+USING (true);

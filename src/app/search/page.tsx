@@ -24,10 +24,6 @@ export default async function SearchPage({
 
 async function SearchResults({ query }: { query: string }) {
   const { albums, tracks, artists, lead } = await search(query);
-  console.log("albums", albums);
-  console.log("tracks", tracks);
-  console.log("artists", artists);
-
   if (
     lead === "none" &&
     artists.length === 0 &&

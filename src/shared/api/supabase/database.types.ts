@@ -141,6 +141,28 @@ export type Database = {
         };
         Relationships: [];
       };
+      profiles: {
+        Row: {
+          created_at: string;
+          id: string;
+          updated_at: string;
+          username: string;
+        };
+        ComputedFields: never;
+        Insert: {
+          created_at?: string;
+          id: string;
+          updated_at?: string;
+          username: string;
+        };
+        Update: {
+          created_at?: string;
+          id?: string;
+          updated_at?: string;
+          username?: string;
+        };
+        Relationships: [];
+      };
       tracks: {
         Row: {
           added_at: string;
@@ -157,7 +179,7 @@ export type Database = {
           genre: string | null;
           id: string;
           isrc: string | null;
-          itunes_id: number | null;
+          itunes_id: number;
           itunes_url: string;
           mbid: string | null;
           preview_url: string | null;
@@ -183,7 +205,7 @@ export type Database = {
           genre?: string | null;
           id?: string;
           isrc?: string | null;
-          itunes_id?: number | null;
+          itunes_id: number;
           itunes_url: string;
           mbid?: string | null;
           preview_url?: string | null;
@@ -208,7 +230,7 @@ export type Database = {
           genre?: string | null;
           id?: string;
           isrc?: string | null;
-          itunes_id?: number | null;
+          itunes_id?: number;
           itunes_url?: string;
           mbid?: string | null;
           preview_url?: string | null;

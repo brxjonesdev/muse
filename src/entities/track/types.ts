@@ -11,7 +11,7 @@ export interface Track {
   explicit: boolean;
   isrc?: string;
   country?: string;
-  iTunesID: number | null;
+  iTunesID: number;
   previewUrl?: string;
   artworkUrl?: string;
   releaseDate?: string;
