@@ -9,8 +9,7 @@ interface TrackPageProps {
 }
 export const instant = false
 export default async function TrackPage({ params }: TrackPageProps) {
-  const { album: albumSlug, track: trackSlug } = await params;
-  const { id: albumId } = parseSlugId(albumSlug);
+  const { track: trackSlug } = await params;
   const { id: trackId } = parseSlugId(trackSlug);
   await db.tracks.ensure(trackId);
 

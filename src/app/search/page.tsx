@@ -24,10 +24,6 @@ export default async function SearchPage({
 
 async function SearchResults({ query }: { query: string }) {
   const { albums, tracks, artists, lead } = await search(query);
-  console.log("albums", albums);
-  console.log("tracks", tracks);
-  console.log("artists", artists);
-
   if (
     lead === "none" &&
     artists.length === 0 &&
@@ -68,6 +64,7 @@ async function SearchResults({ query }: { query: string }) {
               >
                 <div>{album.title}</div>
                 <div>{album.artistID}</div>
+                <div>{album.artistName}</div>
                 
               </Link>
             ))}
@@ -87,6 +84,8 @@ async function SearchResults({ query }: { query: string }) {
               >
                 <div>{track.title}</div>
                 <div>{track.artistID}</div>
+                <div>{track.artistName}</div>
+                <div>{track.albumName}</div>
               </Link>
             ))}
           </div>

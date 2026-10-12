@@ -3,13 +3,15 @@ export interface Track {
   title: string;
   slug: string;
   albumID: number;
+  albumName: string;
   artistID: number;
+  artistName: string;
   trackNumber?: number;
   durationMs?: number;
   explicit: boolean;
   isrc?: string;
   country?: string;
-  iTunesID: number | null;
+  iTunesID: number;
   previewUrl?: string;
   artworkUrl?: string;
   releaseDate?: string;

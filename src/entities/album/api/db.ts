@@ -1,7 +1,12 @@
+
 import { itunes } from "@/shared/api/itunes";
 import { createClient } from "@/shared/api/supabase/server";
 import { mapITunesAlbum } from "./mappers";
 import { db } from "@/shared/api/db";
+import { Database } from "@/shared/api/supabase/database.types";
+import { createAdminClient } from "@/shared/api/supabase/admin";
+
+type AlbumRow = Database["public"]["Tables"]["albums"]["Insert"];
 
 export const albums = {
   search: async (q: string) => {
@@ -12,14 +17,17 @@ export const albums = {
       .select("*")
       .ilike("title", `%${q}%`);
 
-    if (error) throw error;
+    if (error) {
+      console.error("[albums.search] Supabase error:", error);
+      throw error;
+    }
 
     return data;
   },
 
   ensure: async (albumID: number, artistID: number) => {
-    const supabase = await createClient();
-    
+    const supabase = createAdminClient();
+
     const { data: existingAlbum, error: lookupError } = await supabase
       .from("albums")
       .select("*")
@@ -27,11 +35,12 @@ export const albums = {
       .maybeSingle();
 
     if (lookupError) {
-      console.log(lookupError)
-    };
+      console.error("[albums.ensure] Initial lookup error:", lookupError);
+      throw lookupError;
+    }
 
     if (existingAlbum) {
-      console.log("cached album")
+      console.log("[albums.ensure] Cached album:", albumID);
       return existingAlbum;
     }
 
@@ -41,27 +50,31 @@ export const albums = {
     if (!itunesAlbum) {
       throw new Error(`Album ${albumID} was not found on iTunes.`);
     }
+
     const album = mapITunesAlbum(itunesAlbum);
-    const albumToInsert = {
+
+    const albumToInsert: AlbumRow = {
       title: album.title,
+      artist_name: album.artistName,
       slug: album.slug,
       artist_id: artistID,
       itunes_id: album.iTunesID,
-      type: album.type,
-      cover_l: album.largeCover,
-      cover_m: album.smallCover,
-      genre: album.genre,
+      type: album.type ?? null,
+      cover_l: album.largeCover ?? null,
+      cover_m: album.smallCover ?? null,
+      genre: album.genre ?? null,
       release_date:
         album.releaseDate instanceof Date
           ? album.releaseDate.toISOString()
           : album.releaseDate ?? null,
-      track_count: album.trackCount,
-      copyright: album.copyright,
-      country: album.country,
-      label: album.label,
+      track_count: album.trackCount ?? null,
+      copyright: album.copyright ?? null,
+      country: album.country ?? null,
+      label: album.label ?? null,
     };
 
     await db.artists.ensure(artistID);
+
     const { data: newAlbum, error: insertError } = await supabase
       .from("albums")
       .insert(albumToInsert)
@@ -69,9 +82,39 @@ export const albums = {
       .single();
 
     if (insertError) {
-      console.log(insertError);
+      console.error("[albums.ensure] Insert error:", insertError);
+
+      // Another request may have inserted this album first.
+      if (insertError.code === "23505") {
+        const {
+          data: existingAlbum,
+          error: recoveryLookupError,
+        } = await supabase
+          .from("albums")
+          .select("*")
+          .eq("itunes_id", albumID)
+          .maybeSingle();
+
+        if (recoveryLookupError) {
+          console.error(
+            "[albums.ensure] Duplicate-conflict recovery lookup error:",
+            recoveryLookupError,
+          );
+          throw recoveryLookupError;
+        }
+
+        if (existingAlbum) {
+          console.log(
+            "[albums.ensure] Recovered concurrently inserted album:",
+            albumID,
+          );
+          return existingAlbum;
+        }
+      }
+
+      throw insertError;
     }
-    
+
     return newAlbum;
   },
 };

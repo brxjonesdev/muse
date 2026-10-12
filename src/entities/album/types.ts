@@ -2,6 +2,7 @@ export interface Album {
   title: string;
   slug: string;
   artistID: number;
+  artistName: string,
   type?: "album" | "single" | "ep";
   largeCover?: string;
   smallCover?: string;

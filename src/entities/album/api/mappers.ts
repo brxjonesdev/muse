@@ -8,6 +8,7 @@ export const mapDBAlbum = (db: DBAlbum): Album => ({
   title: db.title,
   slug: db.slug,
   artistID: db.artist_id,
+  artistName: db.artist_name,
   type: db.type as Album["type"],
   largeCover: db.cover_l ?? undefined,
   smallCover: db.cover_m ?? undefined,
@@ -20,7 +21,7 @@ export const mapDBAlbum = (db: DBAlbum): Album => ({
   copyright: db.copyright ?? undefined,
   label: db.label ?? undefined,
   explicit: db.explicit ?? undefined,
-  iTunesID: db.itunes_id ?? undefined,
+  iTunesID: db.itunes_id,
   upc: db.upc ?? undefined,
 });
 
@@ -28,6 +29,7 @@ export const mapITunesAlbum = (itApi: ITunesAlbum): Album => ({
   title: itApi.collectionName,
   slug: slugify(itApi.collectionName, itApi.collectionId),
   artistID: itApi.artistId,
+  artistName: itApi.artistName,
   type: itApi.collectionType.toLowerCase() as Album["type"],
   largeCover: itApi.artworkUrl100,
   smallCover: itApi.artworkUrl60,
